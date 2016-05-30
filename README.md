@@ -1,3 +1,3 @@
 Blocipedia: A Bloc project.
 
-Created by Jeffrey David King and my mentor.
+Created by Jeffrey David King and mentor, Bobbilee Hartman.
