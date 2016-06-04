@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
   let(:my_user) { create(:user) }
-  before do
-    set_session(my_user)
-  end
+  before { sign_in my_user }
+  let(:my_wiki) { create(:wiki, user: my_user) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -15,7 +14,7 @@ RSpec.describe WikisController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, id: my_wiki.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -29,9 +28,8 @@ RSpec.describe WikisController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, id: my_wiki.id
       expect(response).to have_http_status(:success)
     end
   end
-
 end
