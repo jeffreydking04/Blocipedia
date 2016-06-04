@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe WikisController, type: :controller do
+  let(:my_user) { create(:user) }
+  before do
+    set_session(my_user)
+  end
 
   describe "GET #index" do
     it "returns http success" do
