@@ -22,6 +22,7 @@ gem 'bcrypt'
 gem 'figaro', '1.0'
 gem 'pry'
 gem 'devise'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
