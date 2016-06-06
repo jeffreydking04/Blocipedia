@@ -1,18 +1,16 @@
-require 'random_data'
-
 5.times do
-    User.create!(
-      pw = RandomData.random_sentence,
-      email:    RandomData.random_email,
-      password: pw,
-      password_confirmation: pw
-    )
+  User.create!(
+    email:    Faker::Internet.email,
+    password: Faker::Internet.password(8)
+  )
 end
+users = User.all
 
 15.times do
   Wiki.create!(
-    title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    title: Faker::StarWars.quote,
+    body: Faker::Hipster.paragraph,
+    user: users.sample
   )
 end
 
