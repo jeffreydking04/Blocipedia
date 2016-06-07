@@ -34,7 +34,7 @@ RSpec.describe WikisController, type: :controller do
     end
   end
 
-  context "signed in user" do
+  context "standard user" do
     before { sign_in my_user }
 
     describe "GET #index" do
