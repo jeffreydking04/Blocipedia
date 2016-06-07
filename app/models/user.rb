@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   private
 
   def set_default_role
-    self.role = 'standard'
+    self.role = :elf
   end
+  
+  enum role: [:standard, :premium, :admin, :elf]
 end
