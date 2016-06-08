@@ -5,25 +5,23 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_initialize :set_default_role
+  after_create :set_default_role
 
   def standard?
-    role == 'standard'
+    self.role == "standard"
   end
 
   def premium?
-    role == 'premium'
+    self.role == "premium"
   end
 
   def admin?
-    role == 'admin'
+    self.role == "admin"
   end
 
   private
 
   def set_default_role
-    self.role = :standard
+    self.role = "standard"
   end
-  
-  enum role: [:standard, :premium, :admin]
 end

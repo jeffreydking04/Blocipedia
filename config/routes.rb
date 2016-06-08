@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
+  get 'users/update'
+
+  resources :charges, only: [:new, :create]
+
   resources :wikis
 
   devise_for :users
+  resources :users, only: [:update]
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
