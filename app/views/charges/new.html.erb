@@ -1,6 +1,6 @@
 <%= form_tag charges_path do %><br>
   <h4>Click this button to upgrade to premium!</h4>
   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
-  <h4>Click this button to downgrade to standard (it is free).</h4>
-  <%= link_to "Downgrade", users_update_path(current_user), class: 'btn seahawk' %>
+  <h4>Click this button to downgrade to standard. Your private wikis will become public.</h4>
+  <%= link_to "Downgrade", users_update_path(current_user), class: 'btn seahawk', data: { confirm: 'All private wikis will become public. Are you sure you want to downgrade?'  } %>
 <% end %>

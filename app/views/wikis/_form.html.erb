@@ -5,11 +5,13 @@
   <%= f.label :body %>
   <%= f.text_area :body, class: 'form-control' %><br>
 
-  <div class="form_group">
-    <%= f.label :private, class: 'checkbox' do %>
-      <%= f.check_box :private %> Private topic
-    <% end %>
-  </div>
+  <% if current_user.premium? || current_user.admin? %>
+    <div class="form_group">
+      <%= f.label :private, class: 'checkbox' do %>
+        <%= f.check_box :private %> Private topic
+      <% end %>
+    </div>
+  <% end %>
 
   <%= f.submit "Save", class: 'btn seahawk'%>
 <% end %>
