@@ -8,4 +8,4 @@
   </div>
 </div><br><br>
 <h1><%= @wiki.title %></h1>
-<h3 class="wiki-body"><%= @wiki.body %></h3>
+<h3 class="wiki-body"><%= markdown(@wiki.body) %></h3>
