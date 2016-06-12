@@ -8,20 +8,21 @@ class User < ActiveRecord::Base
   after_create :set_default_role
 
   def standard?
-    self.role == "standard"
+    self.role == 'standard'
   end
 
   def premium?
-    self.role == "premium"
+    self.role == 'premium'
   end
 
   def admin?
-    self.role == "admin"
+    self.role == 'admin'
   end
 
   private
 
   def set_default_role
-    self.role = "standard"
+    self.role = 'standard'
+    self.save!
   end
 end
