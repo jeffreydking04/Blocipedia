@@ -1,3 +1,5 @@
+boolean_array = [true, false]
+
 5.times do
   User.create!(
     email:    Faker::Internet.email,
@@ -10,7 +12,8 @@ users = User.all
   Wiki.create!(
     title: Faker::StarWars.quote,
     body: Faker::Hipster.paragraph,
-    user: users.sample
+    user: users.sample,
+    private: boolean_array.sample
   )
 end
 
