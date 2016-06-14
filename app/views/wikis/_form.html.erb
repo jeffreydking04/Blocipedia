@@ -5,12 +5,22 @@
   <%= f.label :body %>
   <%= f.text_area :body, class: 'form-control' %><br>
 
-  <% if current_user.premium? || current_user.admin? %>
-    <div class="form_group">
-      <%= f.label :private, class: 'checkbox' do %>
-        <%= f.check_box :private %> Private topic
-      <% end %>
-    </div>
+  <% if @wiki.id.nil? %>
+    <% if current_user.premium? || current_user.admin? %>
+      <div class="form_group">
+        <%= f.label :private, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private topic
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <% if current_user == @wiki.user || current_user.admin? %>
+      <div class="form_group">
+        <%= f.label :private, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private topic
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
   <%= f.submit "Save", class: 'btn seahawk'%>

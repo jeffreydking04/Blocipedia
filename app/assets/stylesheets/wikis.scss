@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .seahawk {
-  background-color: #69Be28;
+  background-color: #69be28;
   color: #002244;
+}
+
+.reverse {
+  background-color: #002244;
+  color: #69be28;
 }
 
 .wiki-body {
