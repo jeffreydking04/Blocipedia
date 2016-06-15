@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborations
+  end
 
   devise_for :users
   resources :users, only: [:update]
