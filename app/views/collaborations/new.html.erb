@@ -1,0 +1,14 @@
+<h1>Add collaborator</h1>
+
+<%= render 'form' %>
+
+<br>
+
+<h2>Current Collaborators</h2>
+<% existing_collaboration_user_id_array = @wiki.collaborations.pluck(:user_id) %>
+<% existing_collaboration_user_id_array.each do |id| %>
+  <% user_to_display = User.find_by(id: id) %>
+  <% collaboration = Collaboration.find_by(user_id: user_to_display.id) %>
+  <h4><%= user_to_display.email %></h4>
+  <%= link_to "Remove Collaborator", wiki_collaboration_path(@wiki, collaboration.id), method: :delete, class: 'btn reverse' %>
+<% end %>
