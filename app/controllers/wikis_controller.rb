@@ -1,6 +1,8 @@
 class WikisController < ApplicationController
+    before_action :authorize_user, except: [:index, :new, :create]
+
   def index
-    @wikis = Wiki.visible_to(current_user)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -57,5 +59,12 @@ class WikisController < ApplicationController
 
   def wiki_params
     params.require(:wiki).permit(:title, :body, :private)
+  end
+
+  def authorize_user
+    @wiki = Wiki.find(params[:id])
+    if @wiki.private?
+      redirect_to(action: :index) unless current_user == @wiki.user || current_user.admin? || @wiki.collaborations.pluck(:user_id).include?(current_user.id)
+    end
   end
 end

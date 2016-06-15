@@ -1,5 +1,5 @@
 class Wiki < ActiveRecord::Base
   belongs_to :user
-
-  scope :visible_to, -> (user) { (user.admin? || user.premium?) ? all : where(private: false) }
+  has_many :collaborations
+  has_many :users, through: :collaborations
 end

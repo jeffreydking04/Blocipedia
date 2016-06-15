@@ -5,3 +5,11 @@
     <%= render partial: 'form', locals: { wiki: @wiki } %>
   </div>
 </div>
+<br>
+<% if @wiki.user == current_user %>
+  <div class="row">
+    <div class="col-md-1">
+      <%= link_to "Collaborators", new_wiki_collaboration_path(@wiki), class: 'btn reverse' %>
+    </div>
+  </div>
+<% end %>
