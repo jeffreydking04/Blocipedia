@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :set_default_role
+ # after_create :set_default_role
 
   def standard?
     self.role == 'standard'
